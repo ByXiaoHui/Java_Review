@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--property 就是在使用set方法实现依赖注入-->
+    <bean id="user1" class="com.xiaohui.bean.User">
+        <property name="userid" value="1"></property>
+        <property name="username" value="张三"></property>
+        <property name="password" value="abcdefg"></property>
+    </bean>
+    <!--
+        constructor-arg 就是在使用构造方法实现依赖注入
+        constructor-arg 的个数必须和某个构造方法的参数个数向对应
+        name指的是参数名
+        index指的是参数的索引
+        value指的是参数值
+    -->
+    <bean id="user2" class="com.xiaohui.bean.User">
+        <constructor-arg name="userid" value="2"></constructor-arg>
+        <constructor-arg name="username" value="小明"></constructor-arg>
+        <constructor-arg name="password" value="123456789"></constructor-arg>
+    </bean>
+    <bean id="user3" class="com.xiaohui.bean.User">
+        <constructor-arg index="0"  value="3"></constructor-arg>
+        <constructor-arg index="1"  value="小黑"></constructor-arg>
+        <constructor-arg index="2"  value="987654321"></constructor-arg>
+    </bean>
+    <!--p名称空间,就是对property的简化处理-->
+    <bean id="user4" class="com.xiaohui.bean.User" p:userid="4" p:username="小东" p:password="111111" ></bean>
+    <!--c名称空间,就是对constructor-arg的简化-->
+    <bean id="user5" class="com.xiaohui.bean.User" c:userid="5" c:username="小西" c:password="222222" ></bean>
+    <bean id="user6" class="com.xiaohui.bean.User">
+        <!--null值-->
+        <property name="userid">
+            <null></null>
+        </property>
+        <!--特殊符号 转译字符 < &lt;  >&gt;  & &amp;     -->
+        <property name="username" value="&amp;xiaoming&lt;&gt;"></property>
+        <!-- 特殊符号  <![CDATA[内容]]>  -->
+        <property name="password">
+            <value><![CDATA[&<123456>]]></value>
+        </property>
+    </bean>
+
+
+</beans>

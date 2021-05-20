@@ -1,0 +1,7 @@
+com\xiaohui\bean\User.class
+com\xiaohui\dao\impl\UserDaoImplA.class
+com\xiaohui\service\impl\UserServiceImpl.class
+com\xiaohui\dao\UserDao.class
+com\xiaohui\dao\impl\UserDaoImplB.class
+com\xiaohui\service\UserService.class
+com\xiaohui\controller\UserController.class
