@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TeacherMapper3">
+    <!--
+    增删方法的返回值类型都是int
+    resultType就无需指定了
+    insert update delete 标签中没有resultType
+    但是仍然可以有paramaterType
+    -->
+
+    <!--增加方法
+    public int addTeacher(Teacher teacher)
+    -->
+    <insert id="addTeacher" parameterType="teacher">
+        insert into teachers(teacher_name,teacher_salary) values(#{teacher_name},#{teacher_salary})
+    </insert>
+
+    <!--修改方法
+    public int updateTeacher(Teacher teacher)
+    -->
+    <update id="updateTeacher" parameterType="teacher">
+        update
+            teachers
+        set
+            teacher_name = #{teacher_name},teacher_salary = #{teacher_salary}
+        where
+            teacher_id = #{teacher_id}
+    </update>
+
+    <!--删除方法
+    public int deleteTeacher(int teacher_id)
+    -->
+    <delete id="deleteTeacher" parameterType="int">
+        delete from teachers where teacher_id &gt; #{teacher_id}
+    </delete>
+
+</mapper>
